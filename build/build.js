@@ -12,6 +12,8 @@ const config = require('../config');
 const webpackConfig = require('./webpack.prod.conf');
 const NwBuilder = require('nw-builder');
 const globby = require('globby');
+const { spawn } = require('child_process');
+const fs = require('fs');
 
 var spinner = ora('building for production...');
 spinner.start();
@@ -30,8 +32,38 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), (err) =>
     }) + '\n\n');
 
     console.log(chalk.cyan('  Webpack build complete.\n'));
-    console.log(chalk.yellow(  'Starting NWJS build...\n'));
-    buildNwjs();
+
+    spinner = ora('generating license credits...');
+    spinner.start();
+
+    const creditsStream = fs.createWriteStream('./nwjs/src/credits.html', { flags: 'w+' });
+
+    const nls = spawn('./node_modules/.bin/node-license-sniffer', ['--recurse', '--body']);
+
+    nls.stdout.pipe(creditsStream);
+
+    nls.stderr.on('data', (data) => {
+      console.log(`stderr: ${data}`);
+    });
+
+    nls.on('close', (code) => {
+      spinner.stop();
+      console.log(chalk.yellow('  Starting NWJS build...\n'));
+
+      spinner = ora('installing required packages for nwjs application...');
+      spinner.start();
+
+      const npm = spawn('npm', ['i'],  { cwd: './nwjs' });
+
+      npm.stderr.on('data', (data) => {
+        console.log(`stderr: ${data}`);
+      });
+
+      npm.on('close', (code) => {
+        spinner.stop();
+        buildNwjs();
+      });
+    });
   });
 });
 

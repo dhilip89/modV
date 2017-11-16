@@ -13,6 +13,7 @@
 	"plugin": false,
 	"chromium-args": "--disable-raf-throttling",
 	"dependencies": {
-		"modv-media-manager": "git+ssh://git@github.com:2xAA/modV-MediaManager.git"
-	}
+		"modv-media-manager": "https://git@github.com:2xAA/modV-MediaManager.git"
+	},
+  "credits": "./credits.html"
 }
