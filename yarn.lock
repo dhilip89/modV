@@ -5514,9 +5514,9 @@ module-not-found-error@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/module-not-found-error/-/module-not-found-error-1.0.1.tgz#cf8b4ff4f29640674d6cdd02b0e3bc523c2bbdc0"
 
-"modv-media-manager@git+ssh://git@github.com/2xAA/modV-MediaManager.git":
+"modv-media-manager@https://github.com/2xAA/modV-MediaManager.git":
   version "1.0.0"
-  resolved "git+ssh://git@github.com/2xAA/modV-MediaManager.git#c756311cc135399afac22e9b0fd57e1f7df53e51"
+  resolved "https://github.com/2xAA/modV-MediaManager.git#c54c2b2ffda7ec7f54baaed492c6e4c1e7e53d20"
   dependencies:
     animated-gif-detector "^1.2.0"
     chokidar "^1.6.1"
@@ -8727,9 +8727,9 @@ vuebar@0.0.17:
   version "0.0.17"
   resolved "https://registry.yarnpkg.com/vuebar/-/vuebar-0.0.17.tgz#62de08ffed46291d34588201013d887aa5d332fe"
 
-"vuedraggable@git+https://github.com/SortableJS/Vue.Draggable.git":
-  version "2.15.0"
-  resolved "git+https://github.com/SortableJS/Vue.Draggable.git#9cda2af11cfc9756217592f07b51e6a153653a13"
+"vuedraggable@https://github.com/SortableJS/Vue.Draggable.git":
+  version "2.16.0"
+  resolved "https://github.com/SortableJS/Vue.Draggable.git#d479d7bb9a11649b5e31ec5aa1ab840f5a6d4707"
   dependencies:
     sortablejs "^1.7.0"
 
